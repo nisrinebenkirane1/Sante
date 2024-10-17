@@ -1,15 +1,55 @@
 ```mermaid
-flowchart TD
-    A[Commencer] --> B{Avez-vous une expérience en programmation ?}
-    B -- Oui --> C[Choisir un langage basé sur vos connaissances]
-    B -- Non --> D{Avez-vous un domaine d'intérêt spécifique ?}
-    D -- Oui --> E[Choisir un langage pertinent pour ce domaine]
-    D -- Non --> F[Commencer par un langage populaire]
-    C --> G[Apprendre et pratiquer]
-    E --> G[Apprendre et pratiquer]
-    F --> G[Apprendre et pratiquer]
-    G --> H[Évaluer vos compétences et progrès]
-    H --> I{Voulez-vous apprendre un autre langage ?}
-    I -- Oui --> B
-    I -- Non --> J[Continuer à améliorer vos compétences]
+classDiagram
+    class Patient {
+        +int id
+        +String nom
+        +String adresse
+        +String numeroTelephone
+        +Date dateDeNaissance
+        +void enregistrer()
+        +void mettreAJourDetails()
+    }
+
+    class Prescription {
+        +int id
+        +String medicament
+        +String dosage
+        +Date dateDebut
+        +Date dateFin
+        +void prescrire()
+        +void mettreAJour()
+    }
+
+    class DossierMedical {
+        +int id
+        +Date dateVisite
+        +String diagnostic
+        +String traitement
+        +void ajouterDossier()
+        +void mettreAJourDossier()
+    }
+
+    class Medicament {
+        +int id
+        +String nom
+        +String type
+        +String fabricant
+        +String effetsSecondaires
+        +void dispenser()
+        +void mettreAJourInfo()
+    }
+
+    class Pharmacie {
+        +int id
+        +String nom
+        +String adresse
+        +String numeroTelephone
+        +void dispenserMedicaments()
+        +void gererInventaire()
+    }
+
+    Patient "1" --> "0..*" Prescription : recoit
+    Patient "1" --> "0..*" DossierMedical : a
+    Prescription "1" --> "1" Medicament : contient
+    Pharmacie "1" --> "0..*" Medicament : stocke
 ```
