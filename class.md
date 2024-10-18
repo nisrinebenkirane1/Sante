@@ -48,8 +48,33 @@ classDiagram
         +void gererInventaire()
     }
 
+    class Medecin {
+        +int id
+        +String nom
+        +String specialite
+        +String numeroTelephone
+        +void diagnostiquer()
+        +void prescrireMedicament()
+    }
+
+    class Clinique {
+        +int id
+        +String nom
+        +String adresse
+        +String numeroTelephone
+        +void gererPatients()
+        +void fournirSoins()
+    }
+
     Patient "1" --> "0..*" Prescription : recoit
     Patient "1" --> "0..*" DossierMedical : a
     Prescription "1" --> "1" Medicament : contient
     Pharmacie "1" --> "0..*" Medicament : stocke
+    Medecin "1" --> "0..*" Prescription : emet
+    Medecin "1" --> "0..*" DossierMedical : cree
+    Clinique "1" --> "0..*" Medecin : emploie
+    Clinique "1" --> "0..*" Patient : traite
+    Patient "1" --> "0..*" Clinique : visite
+```
+
 ```
