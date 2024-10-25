@@ -4,231 +4,75 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix o: <http://omeka.org/s/vocabs/o#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix ma: <http://www.w3.org/ns/ma-ont#>.
 @prefix snt: <https://jardindesconnaissances.univ-paris8.fr/onto/snt#> .
 
 <https://jardindesconnaissances.univ-paris8.fr/onto/snt#> a owl:Ontology ;
     dcterms:title "La Sante" .
 
+
 snt:Patient a rdfs:Class ;
     rdfs:label "Patient" ;
-    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+snt:Prescription a rdfs:Class ;
+    rdfs:label "Prescription" ;
+    vs:term_status "experimental" .
+
+snt:DossierMedical a rdfs:Class ;
+    rdfs:label "Dossier Médical" ;
+    vs:term_status "experimental" .
+
+snt:Medicament a rdfs:Class ;
+    rdfs:label "Médicament" ;
+    vs:term_status "experimental" .
+
+snt:Pharmacie a rdfs:Class ;
+    rdfs:label "Pharmacie" ;
     vs:term_status "experimental" .
 
 snt:Medecin a rdfs:Class ;
-    rdfs:label "Medecin" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" . 
-
-snt:DossierMedical a rdfs:Class ;
-    rdfs:label "DossierMedical" ;
-    rdfs:domain o:Resource ;
+    rdfs:label "Médecin" ;
     vs:term_status "experimental" .
 
-jdc:CribleCarto a rdfs:Class ;
-    rdfs:label "Cartographie d'un crible" ;
-    rdfs:domain o:Resource ;
+snt:Clinique a rdfs:Class ;
+    rdfs:label "Clinique" ;
     vs:term_status "experimental" .
 
-jdc:Actant a rdfs:Class ;
-    rdfs:label "Actant" ;
-    rdfs:domain o:Resource ;
+### Propriétés ###
+# Propriétés pour la classe Patient
+snt:id a rdf:Property ;
+    rdfs:label "Identifiant" ;
+    rdfs:domain snt:Patient ;
     vs:term_status "experimental" .
 
-jdc:Existence a rdfs:Class ;
-    rdfs:label "Existence" ;
-    rdfs:domain o:Resource ;
+snt:nom a rdf:Property ;
+    rdfs:label "Nom" ;
+    rdfs:domain snt:Patient ;
     vs:term_status "experimental" .
 
-jdc:Physique a rdfs:Class ;
-    rdfs:label "Physique" ;
-    rdfs:domain o:Resource ;
+snt:adresse a rdf:Property ;
+    rdfs:label "Adresse" ;
+    rdfs:domain snt:Patient ;
     vs:term_status "experimental" .
 
-jdc:Rapport a rdfs:Class ;
-    rdfs:label "Rapport" ;
-    rdfs:domain o:Resource ;
+snt:numeroTelephone a rdf:Property ;
+    rdfs:label "Numéro de téléphone" ;
+    rdfs:domain snt:Patient ;
     vs:term_status "experimental" .
 
-jdc:Archetype a rdfs:Class ;
-    rdfs:label "Archetype" ;
-    rdfs:domain o:Resource ;
+snt:dateDeNaissance a rdf:Property ;
+    rdfs:label "Date de naissance" ;
+    rdfs:domain snt:Patient ;
     vs:term_status "experimental" .
 
-
-jdc:Concept a rdfs:Class ;
-    rdfs:label "Concept" ;
-    rdfs:domain o:Resource ;
-    owl:sameAs skos:Concept;
+snt:recoitPrescription a rdf:Property ;
+    rdfs:label "reçoit une prescription" ;
+    rdfs:domain snt:Patient ;
+    rdfs:range snt:Prescription ;
     vs:term_status "experimental" .
 
-jdc:x a rdf:Property ;
-    rdfs:label "x" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-snt:y a rdf:Property ;
-    rdfs:label "y" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:xRatingValue a rdf:Property ;
-    rdfs:label "xRatingValue" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:yRatingValue a rdf:Property ;
-    rdfs:label "yRatingValue" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:degradName a rdf:Property ;
-    rdfs:label "degradName" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:degradColors a rdf:Property ;
-    rdfs:label "degradColors" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:creationDate a rdf:Property ;
-    rdfs:label "creationDate" ;
-    rdfs:domain o:Resource .
-
-snt:hasPatient a rdf:Property ;
-    rdfs:label "a comme Patient" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-snt:hasMedecin a rdf:Property ;
-    rdfs:label "a comme Medecin" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-snt:hasDossierMedical a rdf:Property ;
-    rdfs:label "a comme DossierMedical" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasConcept a rdf:Property ;
-    rdfs:label "a comme concept" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
- 
-jdc:hasRapport a rdf:Property ;
-    rdfs:label "a comme rapport" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasCrible a rdf:Property ;
-    rdfs:label "a comme crible" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:cribleLabel a rdf:Property ;
-    rdfs:label "cribleLabel" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:cribleId a rdf:Property ;
-    rdfs:label "cribleId" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:cribleRatingValue a rdf:Property ;
-    rdfs:label "cribleRatingValue" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:distanceCenter a rdf:Property ;
-    rdfs:label "distance du centre" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:distanceConcept a rdf:Property ;
-    rdfs:label "distance du concept" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:ordreCrible a rdf:Property ;
-    rdfs:label "Ordre dans le crible" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasCribleCarto a rdf:Property ;
-    rdfs:label "a comme cartographie" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasSujet a rdf:Property ;
-    rdfs:label "a comme sujet" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-jdc:hasObjet a rdf:Property ;
-    rdfs:label "a comme objet" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-jdc:hasPredicat a rdf:Property ;
-    rdfs:label "a comme prédicat" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-jdc:hasMenu a rdf:Property ;
-    rdfs:label "a comme menu" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-jdc:hasArchetype a rdf:Property ;
-    rdfs:label "a comme archetype" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:Transcription a rdfs:Class ;
-    rdfs:label "Transcription" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:iaModel a rdf:Property ;
-    rdfs:label "IA modèle" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:pipeline a rdf:Property ;
-    rdfs:label "pipeline" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasPerson a rdf:Property ;
-    rdfs:label "a comme personne" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasGeo a rdf:Property ;
-    rdfs:label "a comme lieu" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasEpoque a rdf:Property ;
-    rdfs:label "a comme époque" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasBook a rdf:Property ;
-    rdfs:label "a comme livre" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasMovie a rdf:Property ;
-    rdfs:label "a comme film" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasMusic a rdf:Property ;
-    rdfs:label "a comme musique" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-jdc:hasLink a rdf:Property ;
-    rdfs:label "a comme lien" ;
-    rdfs:domain o:Resource ;
+snt:creeDossierMedical a rdf:Property ;
+    rdfs:label "crée un dossier médical" ;
+    rdfs:domain snt:Medecin ;
+    rdfs:range snt:DossierMedical ;
     vs:term_status "experimental" .
